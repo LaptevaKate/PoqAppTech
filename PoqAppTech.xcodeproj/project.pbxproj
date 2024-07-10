@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		5E876C012C3EB8C000775E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C002C3EB8C000775E8A /* AppDelegate.swift */; };
 		5E876C032C3EB8C000775E8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C022C3EB8C000775E8A /* SceneDelegate.swift */; };
-		5E876C052C3EB8C000775E8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C042C3EB8C000775E8A /* ViewController.swift */; };
-		5E876C082C3EB8C000775E8A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5E876C072C3EB8C000775E8A /* Base */; };
 		5E876C0A2C3EB8C200775E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E876C092C3EB8C200775E8A /* Assets.xcassets */; };
 		5E876C0D2C3EB8C200775E8A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5E876C0C2C3EB8C200775E8A /* Base */; };
 		5E876C182C3EB8C200775E8A /* PoqAppTechTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C172C3EB8C200775E8A /* PoqAppTechTests.swift */; };
 		5E876C222C3EB8C200775E8A /* PoqAppTechUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C212C3EB8C200775E8A /* PoqAppTechUITests.swift */; };
 		5E876C242C3EB8C200775E8A /* PoqAppTechUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C232C3EB8C200775E8A /* PoqAppTechUITestsLaunchTests.swift */; };
+		5E876C362C3EBC5900775E8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C352C3EBC5900775E8A /* NetworkManager.swift */; };
+		5E876C382C3EBC7E00775E8A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C372C3EBC7E00775E8A /* NetworkError.swift */; };
+		5E876C3D2C3EC2B200775E8A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C3C2C3EC2B200775E8A /* MainViewController.swift */; };
+		5E876C3F2C3EC2EB00775E8A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C3E2C3EC2EB00775E8A /* CustomTableViewCell.swift */; };
+		5E876C412C3EC65700775E8A /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C402C3EC65700775E8A /* UITableView+Extension.swift */; };
+		5E876C432C3EC71200775E8A /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C422C3EC71200775E8A /* RepositoryModel.swift */; };
+		5E876C452C3EC77300775E8A /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C442C3EC77300775E8A /* NetworkConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,6 @@
 		5E876BFD2C3EB8C000775E8A /* PoqAppTech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoqAppTech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E876C002C3EB8C000775E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E876C022C3EB8C000775E8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5E876C042C3EB8C000775E8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5E876C072C3EB8C000775E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E876C092C3EB8C200775E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E876C0C2C3EB8C200775E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E876C0E2C3EB8C200775E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,13 @@
 		5E876C1D2C3EB8C200775E8A /* PoqAppTechUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoqAppTechUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E876C212C3EB8C200775E8A /* PoqAppTechUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoqAppTechUITests.swift; sourceTree = "<group>"; };
 		5E876C232C3EB8C200775E8A /* PoqAppTechUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoqAppTechUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E876C352C3EBC5900775E8A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5E876C372C3EBC7E00775E8A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		5E876C3C2C3EC2B200775E8A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5E876C3E2C3EC2EB00775E8A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		5E876C402C3EC65700775E8A /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		5E876C422C3EC71200775E8A /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
+		5E876C442C3EC77300775E8A /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +109,14 @@
 		5E876BFF2C3EB8C000775E8A /* PoqAppTech */ = {
 			isa = PBXGroup;
 			children = (
-				5E876C002C3EB8C000775E8A /* AppDelegate.swift */,
-				5E876C022C3EB8C000775E8A /* SceneDelegate.swift */,
-				5E876C042C3EB8C000775E8A /* ViewController.swift */,
-				5E876C062C3EB8C000775E8A /* Main.storyboard */,
-				5E876C092C3EB8C200775E8A /* Assets.xcassets */,
-				5E876C0B2C3EB8C200775E8A /* LaunchScreen.storyboard */,
+				5E876C332C3EBBC400775E8A /* Managers */,
+				5E876C322C3EBB7C00775E8A /* Models */,
+				5E876C312C3EBB4F00775E8A /* ViewModel */,
+				5E876C3B2C3EC28F00775E8A /* ViewControllers */,
+				5E876C392C3EBCCF00775E8A /* Views */,
+				5E876C3A2C3EC16900775E8A /* Extensions */,
+				5E876C342C3EBBED00775E8A /* Helpers */,
+				5E876C302C3EBB2600775E8A /* Supporting files */,
 				5E876C0E2C3EB8C200775E8A /* Info.plist */,
 			);
 			path = PoqAppTech;
@@ -125,6 +137,73 @@
 				5E876C232C3EB8C200775E8A /* PoqAppTechUITestsLaunchTests.swift */,
 			);
 			path = PoqAppTechUITests;
+			sourceTree = "<group>";
+		};
+		5E876C302C3EBB2600775E8A /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C002C3EB8C000775E8A /* AppDelegate.swift */,
+				5E876C022C3EB8C000775E8A /* SceneDelegate.swift */,
+				5E876C092C3EB8C200775E8A /* Assets.xcassets */,
+				5E876C0B2C3EB8C200775E8A /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		5E876C312C3EBB4F00775E8A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5E876C322C3EBB7C00775E8A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C422C3EC71200775E8A /* RepositoryModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5E876C332C3EBBC400775E8A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C352C3EBC5900775E8A /* NetworkManager.swift */,
+				5E876C442C3EC77300775E8A /* NetworkConstant.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5E876C342C3EBBED00775E8A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C372C3EBC7E00775E8A /* NetworkError.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5E876C392C3EBCCF00775E8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C3E2C3EC2EB00775E8A /* CustomTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5E876C3A2C3EC16900775E8A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C402C3EC65700775E8A /* UITableView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5E876C3B2C3EC28F00775E8A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C3C2C3EC2B200775E8A /* MainViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +312,6 @@
 			files = (
 				5E876C0A2C3EB8C200775E8A /* Assets.xcassets in Resources */,
 				5E876C0D2C3EB8C200775E8A /* Base in Resources */,
-				5E876C082C3EB8C000775E8A /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +336,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E876C052C3EB8C000775E8A /* ViewController.swift in Sources */,
+				5E876C362C3EBC5900775E8A /* NetworkManager.swift in Sources */,
+				5E876C432C3EC71200775E8A /* RepositoryModel.swift in Sources */,
 				5E876C012C3EB8C000775E8A /* AppDelegate.swift in Sources */,
+				5E876C412C3EC65700775E8A /* UITableView+Extension.swift in Sources */,
+				5E876C382C3EBC7E00775E8A /* NetworkError.swift in Sources */,
+				5E876C3F2C3EC2EB00775E8A /* CustomTableViewCell.swift in Sources */,
 				5E876C032C3EB8C000775E8A /* SceneDelegate.swift in Sources */,
+				5E876C452C3EC77300775E8A /* NetworkConstant.swift in Sources */,
+				5E876C3D2C3EC2B200775E8A /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +381,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E876C062C3EB8C000775E8A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E876C072C3EB8C000775E8A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E876C0B2C3EB8C200775E8A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -447,9 +523,7 @@
 				INFOPLIST_FILE = PoqAppTech/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -476,9 +550,7 @@
 				INFOPLIST_FILE = PoqAppTech/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
