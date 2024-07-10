@@ -7,12 +7,7 @@
 
 import UIKit
 
-protocol MainViewControllerProtocol: AnyObject {
-    func updateView(with gitRepos: [RepositoryModel])
-    func showErrorAlert(message: String)
-}
-
-final class MainViewController: UIViewController {
+final class RepoViewController: UIViewController {
     
     private enum Constants {
         enum Text {
@@ -22,15 +17,16 @@ final class MainViewController: UIViewController {
         }
     }
     
-    private var viewModel: RepoViewModel?
+    private var viewModel: RepoViewModel
     private var gitRepos: [RepositoryModel] = []
+    weak var coordinator: AppCoordinator?
     
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CustomTableViewCell.self)
+        tableView.register(RepoTableViewCell.self)
         return tableView
     }()
     
@@ -47,8 +43,20 @@ final class MainViewController: UIViewController {
         return refreshControl
     }()
     
+    init(viewModel: RepoViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "All Repos"
+        bind(viewModel: viewModel)
         addSubviews()
         setupConstraints()
         setupTableView()
@@ -56,6 +64,28 @@ final class MainViewController: UIViewController {
         setupRefreshControl()
         activityIndicator(isShow: true)
     }
+    
+    private func bind(viewModel: RepoViewModel) {
+        viewModel.updateView = { [weak self] repos in
+            self?.gitRepos = repos
+                self?.tableView.reloadData()
+                self?.refreshControl.endRefreshing()
+                self?.activityIndicator(isShow: false)
+        }
+        
+        viewModel.showErrorAlert = { [weak self] message in
+                let alert = UIAlertController(title: Constants.Text.errorTitle, message: message, preferredStyle: .alert)
+                let retryAction = UIAlertAction(title: Constants.Text.errorActionTitle, style: .default) { [weak self] _ in
+                    self?.activityIndicator(isShow: true)
+                    self?.viewModel.fetchGitRepos()
+                }
+                alert.addAction(retryAction)
+                self?.present(alert, animated: true, completion: nil)
+                self?.refreshControl.endRefreshing()
+            
+        }
+    }
+    
     private func addSubviews() {
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
@@ -91,53 +121,24 @@ final class MainViewController: UIViewController {
     }
     
     @objc private func refreshData(_ sender: UIRefreshControl) {
-        viewModel?.fetchGitRepos()
+        viewModel.fetchGitRepos()
     }
     
     private func setupViewWithData() {
-        viewModel?.fetchGitRepos()
-    }
-}
-
-// MARK: - MainViewControllerProtocol
-
-extension MainViewController: MainViewControllerProtocol {
-    
-    func updateView(with gitRepos: [RepositoryModel]) {
-        self.gitRepos = gitRepos
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-            self.activityIndicator(isShow: false)
-        }
-    }
-    
-    func showErrorAlert(message: String) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: Constants.Text.errorTitle, message: message, preferredStyle: .alert)
-            let retryAction = UIAlertAction(title: Constants.Text.errorActionTitle, style: .default) { [weak self] _ in
-                guard let self = self else { return }
-                self.activityIndicator(isShow: true)
-                self.viewModel?.fetchGitRepos()
-            }
-            alert.addAction(retryAction)
-            self.present(alert, animated: true, completion: nil)
-            self.refreshControl.endRefreshing()
-        }
+        viewModel.fetchGitRepos()
     }
 }
 
 // MARK: - UITableViewDataSource
 
-extension MainViewController: UITableViewDataSource {
+extension RepoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gitRepos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(CustomTableViewCell.self)
+        let cell = tableView.dequeue(RepoTableViewCell.self)
         let gitRepo = gitRepos[indexPath.row]
         cell.configure(
             title: gitRepo.name,
@@ -149,9 +150,11 @@ extension MainViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension MainViewController: UITableViewDelegate {
+extension RepoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let repo = gitRepos[indexPath.row]
+        coordinator?.showDetailScreen(with: repo)
     }
 }

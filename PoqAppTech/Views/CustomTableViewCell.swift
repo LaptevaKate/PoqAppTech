@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomTableViewCell: UITableViewCell {
+final class RepoTableViewCell: UITableViewCell {
     // MARK: - Components
     private let titleLabel: UILabel = {
         let label = UILabel()

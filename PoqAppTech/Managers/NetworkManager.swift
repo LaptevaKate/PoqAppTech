@@ -10,7 +10,7 @@ import Foundation
 protocol NetworkManagerProtocol {
     
     func makeRequest<T: Decodable>(
-        with url: URL?,
+        with url: URL,
         expecting: T.Type ,
         completion: @escaping(Result<T, NetworkError>) -> Void
     )
@@ -19,22 +19,27 @@ protocol NetworkManagerProtocol {
 final class NetworkManager: NetworkManagerProtocol {
     
     func makeRequest<T: Decodable>(
-        with url: URL?,
+        with url: URL,
         expecting: T.Type,
         completion: @escaping(Result<T, NetworkError>) -> Void
     ) {
-        guard let url = url else {
-            return completion(.failure(NetworkError.invalidURL))
-        }
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            let result: Result<T, NetworkError>
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+            
             guard let data = data, error == nil else {
-                return completion(.failure(NetworkError.invalidData))
+                result = .failure(NetworkError.invalidData)
+                return
             }
             do {
-                let result = try JSONDecoder().decode(expecting, from: data)
-                completion(.success(result))
+                let data = try JSONDecoder().decode(expecting, from: data)
+                result = .success(data)
             } catch {
-                completion(.failure(NetworkError.generalMessage))
+                result = .failure(NetworkError.generalMessage)
             }
         }
         task.resume()
