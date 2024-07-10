@@ -21,6 +21,7 @@
 		5E876C412C3EC65700775E8A /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C402C3EC65700775E8A /* UITableView+Extension.swift */; };
 		5E876C432C3EC71200775E8A /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C422C3EC71200775E8A /* RepositoryModel.swift */; };
 		5E876C452C3EC77300775E8A /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C442C3EC77300775E8A /* NetworkConstant.swift */; };
+		5E876C492C3ED50600775E8A /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C482C3ED50600775E8A /* RepoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		5E876C402C3EC65700775E8A /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		5E876C422C3EC71200775E8A /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
 		5E876C442C3EC77300775E8A /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		5E876C482C3ED50600775E8A /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		5E876C312C3EBB4F00775E8A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5E876C482C3ED50600775E8A /* RepoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				5E876C3F2C3EC2EB00775E8A /* CustomTableViewCell.swift in Sources */,
 				5E876C032C3EB8C000775E8A /* SceneDelegate.swift in Sources */,
 				5E876C452C3EC77300775E8A /* NetworkConstant.swift in Sources */,
+				5E876C492C3ED50600775E8A /* RepoViewModel.swift in Sources */,
 				5E876C3D2C3EC2B200775E8A /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

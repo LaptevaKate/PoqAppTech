@@ -18,7 +18,7 @@ final class CustomTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let subtitleLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
@@ -51,7 +51,7 @@ final class CustomTableViewCell: UITableViewCell {
     // MARK: - Private Methods
     private func setupViews() {
         stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(subtitleLabel)
+        stackView.addArrangedSubview(descriptionLabel)
         contentView.addSubview(stackView)
     }
     
@@ -66,6 +66,6 @@ final class CustomTableViewCell: UITableViewCell {
     // MARK: - Cell Configure
     func configure(title: String, subtitle: String) {
         titleLabel.text = title
-        subtitleLabel.text = subtitle
+        descriptionLabel.text = subtitle
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RepositoryModel: Codable {
+struct RepositoryModel: Decodable, Equatable{
     let name: String
     let description: String?
 }
