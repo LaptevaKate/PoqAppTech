@@ -126,6 +126,4 @@ private extension RepoDetailsViewController {
         
         repoNameLabel.attributedText = attributedString
     }
-    
-
 }

@@ -11,7 +11,7 @@ final class RepoDetailsViewModel {
     // DI (Initializer Injection)
     private var networkManager: NetworkManagerProtocol
     private let repo: RepoModel
-
+    
     init(repo: RepoModel, networkManager: NetworkManagerProtocol) {
         self.repo = repo
         self.networkManager = networkManager

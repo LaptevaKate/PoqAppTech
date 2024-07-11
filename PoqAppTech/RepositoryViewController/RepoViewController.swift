@@ -79,9 +79,9 @@ final class RepoViewController: UIViewController {
             let retryAction = UIAlertAction(
                 title: AlertErrorConstants.Text.errorActionTitle,
                 style: .default) { [weak self] _ in
-                self?.activityIndicator(isShow: true)
-                self?.viewModel.fetchGitRepos()
-            }
+                    self?.activityIndicator(isShow: true)
+                    self?.viewModel.fetchGitRepos()
+                }
             alert.addAction(retryAction)
             self?.present(alert, animated: true, completion: nil)
             self?.refreshControl.endRefreshing()
