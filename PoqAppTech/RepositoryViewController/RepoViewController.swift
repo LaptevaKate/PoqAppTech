@@ -8,7 +8,7 @@
 import UIKit
 
 final class RepoViewController: UIViewController {
-
+    
     private var viewModel: RepoViewModel
     private var gitRepos: [RepoModel] = []
     weak var coordinator: AppCoordinator?
@@ -66,8 +66,8 @@ final class RepoViewController: UIViewController {
         }
         
         viewModel.showErrorAlert = { [weak self] message in
-            let alert = UIAlertController(title: Constants.Text.errorTitle, message: message, preferredStyle: .alert)
-            let retryAction = UIAlertAction(title: Constants.Text.errorActionTitle, style: .default) { [weak self] _ in
+            let alert = UIAlertController(title: AlertErrorConstants.Text.errorTitle, message: message, preferredStyle: .alert)
+            let retryAction = UIAlertAction(title: AlertErrorConstants.Text.errorActionTitle, style: .default) { [weak self] _ in
                 self?.activityIndicator(isShow: true)
                 self?.viewModel.fetchGitRepos()
             }
@@ -89,7 +89,7 @@ final class RepoViewController: UIViewController {
 //MARK: - UI
 private extension RepoViewController {
     private func setUpNavigationTitle() {
-        title = "All Repos"
+        title = MainScreenConstants.titleText
         navigationController?.navigationBar.backgroundColor = .purple
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
@@ -109,6 +109,10 @@ private extension RepoViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    enum MainScreenConstants {
+        static let titleText = "All Repos"
     }
 }
 
@@ -132,7 +136,7 @@ extension RepoViewController: UITableViewDataSource {
         let gitRepo = gitRepos[indexPath.row]
         cell.configure(
             title: gitRepo.name,
-            subtitle: gitRepo.description ?? Constants.Text.noDescriptionAvailable
+            subtitle: gitRepo.description ?? AlertErrorConstants.Text.noDescriptionAvailable
         )
         cell.accessoryType = .disclosureIndicator
         return cell

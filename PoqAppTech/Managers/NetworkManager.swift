@@ -8,14 +8,26 @@
 import Foundation
 import UIKit
 
+/// A protocol defining the requirements for a network manager.
 protocol NetworkManagerProtocol {
     
+    /// Makes a network request and decodes the response into the specified type.
+    ///
+    /// - Parameters:
+    ///   - url: The URL for the network request.
+    ///   - expecting: The type to decode the response into.
+    ///   - completion: A closure to be called once the request is completed, providing the result.
     func makeRequest<T: Decodable>(
         with url: URL,
         expecting: T.Type ,
         completion: @escaping(Result<T, NetworkError>) -> Void
     )
     
+    /// Fetches an image from the specified URL.
+    ///
+    /// - Parameters:
+    ///   - url: The URL of the image to fetch.
+    ///   - completion: A closure to be called once the image is fetched, providing the result.
     func fetchImage(
         with url: URL,
         completion: @escaping(Result<UIImage, NetworkError>) -> Void
@@ -24,6 +36,12 @@ protocol NetworkManagerProtocol {
 
 final class NetworkManager: NetworkManagerProtocol {
     
+    /// Makes a network request with the given URL and decodes the response into the specified type.
+    ///
+    /// - Parameters:
+    ///   - url: The URL for the network request.
+    ///   - expecting: The type to decode the response into.
+    ///   - completion: A closure to be called once the request is completed, providing the result.
     func makeRequest<T: Decodable>(
         with url: URL,
         expecting: T.Type,
@@ -51,6 +69,11 @@ final class NetworkManager: NetworkManagerProtocol {
         task.resume()
     }
     
+    /// Fetches an image from the specified URL.
+    ///
+    /// - Parameters:
+    ///   - url: The URL of the image to fetch.
+    ///   - completion: A closure to be called once the image is fetched, providing the result.
     func fetchImage(
         with url: URL,
         completion: @escaping(Result<UIImage, NetworkError>) -> Void

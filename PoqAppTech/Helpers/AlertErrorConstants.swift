@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Constants {
+public enum AlertErrorConstants {
     enum Text {
         static let noDescriptionAvailable: String = "No description available"
         static let errorTitle: String = "Error"

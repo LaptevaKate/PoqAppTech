@@ -27,6 +27,8 @@
 		5E876C512C3F13C900775E8A /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C502C3F13C900775E8A /* RepoDetailsViewModel.swift */; };
 		5E876C542C3FADFB00775E8A /* AlertErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C532C3FADFB00775E8A /* AlertErrorConstants.swift */; };
 		5E876C562C3FB63400775E8A /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C552C3FB63400775E8A /* MockNetworkService.swift */; };
+		5E876C592C3FE08800775E8A /* Ubuntu-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E876C582C3FE08800775E8A /* Ubuntu-font.ttf */; };
+		5E876C5B2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C5A2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		5E876C502C3F13C900775E8A /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
 		5E876C532C3FADFB00775E8A /* AlertErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrorConstants.swift; sourceTree = "<group>"; };
 		5E876C552C3FB63400775E8A /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		5E876C582C3FE08800775E8A /* Ubuntu-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-font.ttf"; sourceTree = "<group>"; };
+		5E876C5A2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				5E876C3A2C3EC16900775E8A /* Extensions */,
 				5E876C342C3EBBED00775E8A /* Helpers */,
 				5E876C302C3EBB2600775E8A /* Supporting files */,
+				5E876C572C3FE02000775E8A /* Font */,
 				5E876C0E2C3EB8C200775E8A /* Info.plist */,
 			);
 			path = PoqAppTech;
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				5E876C172C3EB8C200775E8A /* PoqAppTechTests.swift */,
+				5E876C5A2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift */,
 				5E876C552C3FB63400775E8A /* MockNetworkService.swift */,
 			);
 			path = PoqAppTechTests;
@@ -230,6 +236,14 @@
 				5E876C422C3EC71200775E8A /* RepoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5E876C572C3FE02000775E8A /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5E876C582C3FE08800775E8A /* Ubuntu-font.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E876C592C3FE08800775E8A /* Ubuntu-font.ttf in Resources */,
 				5E876C0A2C3EB8C200775E8A /* Assets.xcassets in Resources */,
 				5E876C0D2C3EB8C200775E8A /* Base in Resources */,
 			);
@@ -385,6 +400,7 @@
 			files = (
 				5E876C562C3FB63400775E8A /* MockNetworkService.swift in Sources */,
 				5E876C182C3EB8C200775E8A /* PoqAppTechTests.swift in Sources */,
+				5E876C5B2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
