@@ -34,7 +34,11 @@ final class RepoViewController: UIViewController {
     
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(fetchData),
+            for: .valueChanged
+        )
         return refreshControl
     }()
     
@@ -66,8 +70,14 @@ final class RepoViewController: UIViewController {
         }
         
         viewModel.showErrorAlert = { [weak self] message in
-            let alert = UIAlertController(title: AlertErrorConstants.Text.errorTitle, message: message, preferredStyle: .alert)
-            let retryAction = UIAlertAction(title: AlertErrorConstants.Text.errorActionTitle, style: .default) { [weak self] _ in
+            let alert = UIAlertController(
+                title: AlertErrorConstants.Text.errorTitle,
+                message: message,
+                preferredStyle: .alert
+            )
+            let retryAction = UIAlertAction(
+                title: AlertErrorConstants.Text.errorActionTitle,
+                style: .default) { [weak self] _ in
                 self?.activityIndicator(isShow: true)
                 self?.viewModel.fetchGitRepos()
             }
@@ -126,10 +136,12 @@ extension RepoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(RepoTableViewCell.self)
         if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = UIColor(red: 230/255,
-                                           green: 230/255,
-                                           blue: 250/255,
-                                           alpha: 1.0)
+            cell.backgroundColor = UIColor(
+                red: 230/255,
+                green: 230/255,
+                blue: 250/255,
+                alpha: 1.0
+            )
         } else {
             cell.backgroundColor = UIColor.white
         }

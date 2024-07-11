@@ -101,21 +101,27 @@ private extension RepoDetailsViewController {
         let shadow = NSShadow()
         shadow.shadowBlurRadius = DetailScreenConstants.radiusForShadowBlur
         shadow.shadowColor = UIColor.darkGray
-        shadow.shadowOffset = .init(width: DetailScreenConstants.setShadowOffWidth, height: DetailScreenConstants.setShadowOffWidth)
+        shadow.shadowOffset = .init(
+            width: DetailScreenConstants.setShadowOffWidth,
+            height: DetailScreenConstants.setShadowOffWidth)
         
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: DetailScreenConstants.fontName, size: DetailScreenConstants.fontSize)!,
+            .font: UIFont(
+                name: DetailScreenConstants.fontName,
+                size: DetailScreenConstants.fontSize)!,
             .shadow: shadow
         ]
         
         let fullString = DetailScreenConstants.labelText + viewModel.repoTitle
-        let attributedString = NSMutableAttributedString(string: fullString,
-                                                         attributes: attributes)
+        let attributedString = NSMutableAttributedString(
+            string: fullString,
+            attributes: attributes)
         
         if let range = (fullString as NSString).range(of: viewModel.repoTitle) as NSRange? {
-            attributedString.addAttribute(.foregroundColor, 
-                                          value: UIColor.red,
-                                          range: range)
+            attributedString.addAttribute(
+                .foregroundColor,
+                value: UIColor.red,
+                range: range)
         }
         
         repoNameLabel.attributedText = attributedString
