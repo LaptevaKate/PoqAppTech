@@ -8,15 +8,7 @@
 import UIKit
 
 final class RepoViewController: UIViewController {
-    
-    private enum Constants {
-        enum Text {
-            static let noDescriptionAvailable: String = "No description available"
-            static let errorTitle: String = "Error"
-            static let errorActionTitle: String = "Retry"
-        }
-    }
-    
+
     private var viewModel: RepoViewModel
     private var gitRepos: [RepoModel] = []
     weak var coordinator: AppCoordinator?
@@ -58,7 +50,7 @@ final class RepoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "All Repos"
+        setUpNavigationTitle()
         bind(viewModel: viewModel)
         setupUI()
         fetchData()
@@ -97,6 +89,12 @@ final class RepoViewController: UIViewController {
 
 //MARK: - UI
 private extension RepoViewController {
+    private func setUpNavigationTitle() {
+        title = "All Repos"
+        navigationController?.navigationBar.backgroundColor = .purple
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
     func setupUI() {
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
@@ -116,7 +114,6 @@ private extension RepoViewController {
 }
 
 // MARK: - UITableViewDataSource
-
 extension RepoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,6 +122,14 @@ extension RepoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(RepoTableViewCell.self)
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = UIColor(red: 230/255,
+                                           green: 230/255,
+                                           blue: 250/255,
+                                           alpha: 1.0)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
         let gitRepo = gitRepos[indexPath.row]
         cell.configure(
             title: gitRepo.name,

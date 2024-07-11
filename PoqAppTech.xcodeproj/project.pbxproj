@@ -25,6 +25,8 @@
 		5E876C4C2C3EFD1300775E8A /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C4B2C3EFD1300775E8A /* RepoDetailsViewController.swift */; };
 		5E876C4F2C3EFDC300775E8A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C4E2C3EFDC300775E8A /* AppCoordinator.swift */; };
 		5E876C512C3F13C900775E8A /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C502C3F13C900775E8A /* RepoDetailsViewModel.swift */; };
+		5E876C542C3FADFB00775E8A /* AlertErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C532C3FADFB00775E8A /* AlertErrorConstants.swift */; };
+		5E876C562C3FB63400775E8A /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C552C3FB63400775E8A /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		5E876C4B2C3EFD1300775E8A /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		5E876C4E2C3EFDC300775E8A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5E876C502C3F13C900775E8A /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
+		5E876C532C3FADFB00775E8A /* AlertErrorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrorConstants.swift; sourceTree = "<group>"; };
+		5E876C552C3FB63400775E8A /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				5E876C172C3EB8C200775E8A /* PoqAppTechTests.swift */,
+				5E876C552C3FB63400775E8A /* MockNetworkService.swift */,
 			);
 			path = PoqAppTechTests;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				5E876C372C3EBC7E00775E8A /* NetworkError.swift */,
+				5E876C532C3FADFB00775E8A /* AlertErrorConstants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				5E876C452C3EC77300775E8A /* NetworkConstant.swift in Sources */,
 				5E876C4C2C3EFD1300775E8A /* RepoDetailsViewController.swift in Sources */,
 				5E876C492C3ED50600775E8A /* RepoViewModel.swift in Sources */,
+				5E876C542C3FADFB00775E8A /* AlertErrorConstants.swift in Sources */,
 				5E876C3D2C3EC2B200775E8A /* RepoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E876C562C3FB63400775E8A /* MockNetworkService.swift in Sources */,
 				5E876C182C3EB8C200775E8A /* PoqAppTechTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

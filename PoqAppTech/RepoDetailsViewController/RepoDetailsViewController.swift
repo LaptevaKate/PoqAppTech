@@ -42,16 +42,23 @@ final class RepoDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         setupUI()
         bind(viewModel: viewModel)
         viewModel.getImage()
+        rotateView(targetView: repoImageView, duration: 3)
     }
     
     private func bind(viewModel: RepoDetailsViewModel) {
         viewModel.getImageSuccess = { [weak self] image in
             self?.repoImageView.image = image
         }
+    }
+    private func rotateView(targetView: UIView, duration: Double) {
+        UIView.animate(withDuration: duration, delay: 0.0, options: [], animations: {
+            self.repoImageView.transform = self.repoImageView.transform.rotated(by: .pi)
+            self.repoImageView.transform = self.repoImageView.transform.rotated(by: .pi)
+        }, completion: nil)
+        
     }
 }
 
