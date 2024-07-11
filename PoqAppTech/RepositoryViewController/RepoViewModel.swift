@@ -9,6 +9,7 @@ import Foundation
 
 final class RepoViewModel {
     
+    // DI (Initializer Injection)
     private var networkManager: NetworkManagerProtocol
     var updateView: (([RepoModel]) -> Void)?
     var showErrorAlert: ((String) -> Void)?
