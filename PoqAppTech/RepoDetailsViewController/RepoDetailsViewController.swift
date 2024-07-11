@@ -127,17 +127,5 @@ private extension RepoDetailsViewController {
         repoNameLabel.attributedText = attributedString
     }
     
-    enum DetailScreenConstants {
-        static let stackViewSpacing = 40
-        static let backButtonImageName = "arrowshape.backward.fill"
-        static let rotateViewDuration: Double = 3
-        static let rotateViewDurationDelay: Double = 0.0
-        static let titleText = "Detail Repos"
-        static let radiusForShadowBlur: CGFloat = 5
-        static let setShadowOffWidth = 2
-        static let setShadowOffHight = 5
-        static let fontName = "Ubuntu-Bold"
-        static let fontSize = 18.0
-        static let labelText = "Detail Repo Name is "
-    }
+
 }

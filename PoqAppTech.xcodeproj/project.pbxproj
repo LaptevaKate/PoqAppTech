@@ -30,6 +30,7 @@
 		5E876C592C3FE08800775E8A /* Ubuntu-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E876C582C3FE08800775E8A /* Ubuntu-font.ttf */; };
 		5E876C5B2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C5A2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift */; };
 		5E876C5D2C3FFBDD00775E8A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C5C2C3FFBDD00775E8A /* UIColor+Extension.swift */; };
+		5E876C5F2C3FFE4B00775E8A /* ConstantsVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E876C5E2C3FFE4B00775E8A /* ConstantsVCs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		5E876C582C3FE08800775E8A /* Ubuntu-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-font.ttf"; sourceTree = "<group>"; };
 		5E876C5A2C3FEA2800775E8A /* RepoDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		5E876C5C2C3FFBDD00775E8A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		5E876C5E2C3FFE4B00775E8A /* ConstantsVCs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsVCs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				5E876C372C3EBC7E00775E8A /* NetworkError.swift */,
 				5E876C532C3FADFB00775E8A /* AlertErrorConstants.swift */,
+				5E876C5E2C3FFE4B00775E8A /* ConstantsVCs.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				5E876C512C3F13C900775E8A /* RepoDetailsViewModel.swift in Sources */,
 				5E876C012C3EB8C000775E8A /* AppDelegate.swift in Sources */,
 				5E876C412C3EC65700775E8A /* UITableView+Extension.swift in Sources */,
+				5E876C5F2C3FFE4B00775E8A /* ConstantsVCs.swift in Sources */,
 				5E876C382C3EBC7E00775E8A /* NetworkError.swift in Sources */,
 				5E876C3F2C3EC2EB00775E8A /* RepoTableViewCell.swift in Sources */,
 				5E876C032C3EB8C000775E8A /* SceneDelegate.swift in Sources */,

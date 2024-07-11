@@ -121,10 +121,6 @@ private extension RepoViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
-    
-    enum MainScreenConstants {
-        static let titleText = "All Repos"
-    }
 }
 
 // MARK: - UITableViewDataSource
