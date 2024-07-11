@@ -74,7 +74,6 @@ final class RepoViewController: UIViewController {
             alert.addAction(retryAction)
             self?.present(alert, animated: true, completion: nil)
             self?.refreshControl.endRefreshing()
-            
         }
     }
     
@@ -135,6 +134,7 @@ extension RepoViewController: UITableViewDataSource {
             title: gitRepo.name,
             subtitle: gitRepo.description ?? Constants.Text.noDescriptionAvailable
         )
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }

@@ -17,15 +17,17 @@ final class RepoDetailsViewController: UIViewController {
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [repoImageView])
+        let stackView = UIStackView(arrangedSubviews: [repoNameLabel, repoImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .center
-        stackView.spacing = UIStackView.spacingUseSystem
+        stackView.spacing = 40
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    private let repoNameLabel = UILabel()
     
     weak var coordinator: AppCoordinator?
     private var viewModel: RepoDetailsViewModel
@@ -46,6 +48,20 @@ final class RepoDetailsViewController: UIViewController {
         bind(viewModel: viewModel)
         viewModel.getImage()
         rotateView(targetView: repoImageView, duration: 3)
+        backButtonToRepoTapped()
+    }
+    
+    private func backButtonToRepoTapped() {
+        let backButton = UIButton(type: .system)
+        backButton.setImage(UIImage(systemName: "arrowshape.backward.fill"), for: .normal)
+        backButton.tintColor = .white
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        let customBackButton = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = customBackButton
+    }
+    
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func bind(viewModel: RepoDetailsViewModel) {
@@ -65,7 +81,8 @@ final class RepoDetailsViewController: UIViewController {
 //MARK: - UI
 private extension RepoDetailsViewController {
     func setupUI() {
-        navigationItem.title = viewModel.repoTitle
+        navigationItem.title = "Detail Repos"
+        repoNameLabel.text = "Detail Repo Name is \(viewModel.repoTitle)."
         view.backgroundColor = .white
         view.addSubview(stackView)
         

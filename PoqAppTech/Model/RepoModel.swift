@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct RepoModel: Decodable, Equatable {
+struct RepoModel: Decodable {
     let name: String
     let description: String?
     let owner: Owner
 }
 
-struct Owner: Decodable, Equatable {
+struct Owner: Decodable {
     let avatarURL: String
     
     enum CodingKeys: String, CodingKey {

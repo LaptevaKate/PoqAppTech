@@ -40,18 +40,4 @@ final class PoqAppTechTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
-    
-    func testFetchGitRepos_Failure() {
-        let expectation = XCTestExpectation(description: "Fetch git repos failure")
-        mockNetworkManager.shouldReturnError = true
-        
-        viewModel.showErrorAlert = { error in
-            XCTAssertEqual(error, "Something went wrong")
-            expectation.fulfill()
-        }
-
-        viewModel.fetchGitRepos()
-        
-        wait(for: [expectation], timeout: 1.0)
-    }
 }

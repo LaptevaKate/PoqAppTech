@@ -44,7 +44,7 @@ final class PoqAppTechUITests: XCTestCase {
         waitForElementToAppear(firstCell)
         firstCell.tap()
         
-        let detailTitle = app.staticTexts["simplerrd"] // Измените на соответствующий элемент UI вашего экрана деталей
+        let detailTitle = app.staticTexts["Detail Repos"] 
         XCTAssertTrue(detailTitle.exists, "The detail screen is displayed")
     }
 }
