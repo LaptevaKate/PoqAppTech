@@ -18,19 +18,22 @@ final class RepoViewController: UIViewController {
     }
     
     private var viewModel: RepoViewModel
-    private var gitRepos: [RepositoryModel] = []
+    private var gitRepos: [RepoModel] = []
     weak var coordinator: AppCoordinator?
     
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(RepoTableViewCell.self)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.refreshControl = refreshControl
         return tableView
     }()
     
-    private let activityIndicator: UIActivityIndicatorView = {
+    private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
@@ -39,7 +42,7 @@ final class RepoViewController: UIViewController {
     
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         return refreshControl
     }()
     
@@ -57,41 +60,47 @@ final class RepoViewController: UIViewController {
         super.viewDidLoad()
         title = "All Repos"
         bind(viewModel: viewModel)
-        addSubviews()
-        setupConstraints()
-        setupTableView()
-        setupViewWithData()
-        setupRefreshControl()
+        setupUI()
+        fetchData()
         activityIndicator(isShow: true)
     }
     
     private func bind(viewModel: RepoViewModel) {
         viewModel.updateView = { [weak self] repos in
             self?.gitRepos = repos
-                self?.tableView.reloadData()
-                self?.refreshControl.endRefreshing()
-                self?.activityIndicator(isShow: false)
+            self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
+            self?.activityIndicator(isShow: false)
         }
         
         viewModel.showErrorAlert = { [weak self] message in
-                let alert = UIAlertController(title: Constants.Text.errorTitle, message: message, preferredStyle: .alert)
-                let retryAction = UIAlertAction(title: Constants.Text.errorActionTitle, style: .default) { [weak self] _ in
-                    self?.activityIndicator(isShow: true)
-                    self?.viewModel.fetchGitRepos()
-                }
-                alert.addAction(retryAction)
-                self?.present(alert, animated: true, completion: nil)
-                self?.refreshControl.endRefreshing()
+            let alert = UIAlertController(title: Constants.Text.errorTitle, message: message, preferredStyle: .alert)
+            let retryAction = UIAlertAction(title: Constants.Text.errorActionTitle, style: .default) { [weak self] _ in
+                self?.activityIndicator(isShow: true)
+                self?.viewModel.fetchGitRepos()
+            }
+            alert.addAction(retryAction)
+            self?.present(alert, animated: true, completion: nil)
+            self?.refreshControl.endRefreshing()
             
         }
     }
     
-    private func addSubviews() {
-        view.addSubview(tableView)
-        view.addSubview(activityIndicator)
+    private func activityIndicator(isShow: Bool) {
+        isShow ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
-    private func setupConstraints() {
+    @objc private func fetchData() {
+        viewModel.fetchGitRepos()
+    }
+}
+
+//MARK: - UI
+private extension RepoViewController {
+    func setupUI() {
+        view.addSubview(tableView)
+        view.addSubview(activityIndicator)
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -103,29 +112,6 @@ final class RepoViewController: UIViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-    }
-    
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.addSubview(refreshControl)
-    }
-    
-    private func setupRefreshControl() {
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-    }
-    
-    private func activityIndicator(isShow: Bool) {
-        isShow ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
-    }
-    
-    @objc private func refreshData(_ sender: UIRefreshControl) {
-        viewModel.fetchGitRepos()
-    }
-    
-    private func setupViewWithData() {
-        viewModel.fetchGitRepos()
     }
 }
 

@@ -14,12 +14,12 @@ public enum NetworkError: Error {
     
     var description: String {
         switch self {
-            case .invalidURL:
-                "Invalid URL"
-            case .invalidData:
-                "Invalid Data"
-            case .generalMessage:
-                "Something went wrong"
+        case .invalidURL:
+            "Invalid URL"
+        case .invalidData:
+            "Invalid Data"
+        case .generalMessage:
+            "Something went wrong"
         }
     }
 }

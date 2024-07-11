@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol NetworkManagerProtocol {
     
@@ -13,6 +14,11 @@ protocol NetworkManagerProtocol {
         with url: URL,
         expecting: T.Type ,
         completion: @escaping(Result<T, NetworkError>) -> Void
+    )
+    
+    func fetchImage(
+        with url: URL,
+        completion: @escaping(Result<UIImage, NetworkError>) -> Void
     )
 }
 
@@ -41,6 +47,28 @@ final class NetworkManager: NetworkManagerProtocol {
             } catch {
                 result = .failure(NetworkError.generalMessage)
             }
+        }
+        task.resume()
+    }
+    
+    func fetchImage(
+        with url: URL,
+        completion: @escaping(Result<UIImage, NetworkError>) -> Void
+    ) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            let result: Result<UIImage, NetworkError>
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+            
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
+                result = .failure(NetworkError.invalidData)
+                return
+            }
+            
+            result = .success(image)
         }
         task.resume()
     }

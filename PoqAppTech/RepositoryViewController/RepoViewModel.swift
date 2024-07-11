@@ -10,7 +10,7 @@ import Foundation
 final class RepoViewModel {
     
     private var networkManager: NetworkManagerProtocol
-    var updateView: (([RepositoryModel]) -> Void)?
+    var updateView: (([RepoModel]) -> Void)?
     var showErrorAlert: ((String) -> Void)?
     
     init(networkManager: NetworkManagerProtocol) {
@@ -22,7 +22,7 @@ final class RepoViewModel {
         
         networkManager.makeRequest(
             with: url,
-            expecting: [RepositoryModel].self) { [weak self] result in
+            expecting: [RepoModel].self) { [weak self] result in
                 switch result {
                 case .success(let gitRepos):
                     self?.updateView?(gitRepos)

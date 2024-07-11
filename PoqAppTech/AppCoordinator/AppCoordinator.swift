@@ -7,17 +7,15 @@
 
 import UIKit
 
-import UIKit
-
 class AppCoordinator {
     private let window: UIWindow
     private let navigationController: UINavigationController
-
+    
     init(window: UIWindow) {
         self.window = window
         self.navigationController = UINavigationController()
     }
-
+    
     func start() {
         let repoViewModel = RepoViewModel(networkManager: NetworkManager())
         let viewController = RepoViewController(viewModel: repoViewModel)
@@ -26,14 +24,11 @@ class AppCoordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
-
-    func showDetailScreen(with repo: RepositoryModel) {
-        let detailViewController = RepoDetailsViewController(repo: repo)
+    
+    func showDetailScreen(with repo: RepoModel) {
+        let viewModel = RepoDetailsViewModel(repo: repo, networkManager: NetworkManager())
+        let detailViewController = RepoDetailsViewController(viewModel: viewModel)
         detailViewController.coordinator = self
         navigationController.pushViewController(detailViewController, animated: true)
-    }
-
-    func navigateBack() {
-        navigationController.popViewController(animated: true)
     }
 }

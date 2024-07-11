@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  RepoTableViewCell.swift
 //  PoqAppTech
 //
 //  Created by Екатерина Лаптева on 10.07.24.
