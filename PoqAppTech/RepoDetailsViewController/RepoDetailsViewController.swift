@@ -9,6 +9,10 @@ import UIKit
 
 final class RepoDetailsViewController: UIViewController {
     
+    weak var coordinator: AppCoordinator?
+    private var viewModel: RepoDetailsViewModel
+    
+    // MARK: - Components
     private lazy var repoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -28,9 +32,6 @@ final class RepoDetailsViewController: UIViewController {
     }()
     
     private let repoNameLabel = UILabel()
-    
-    weak var coordinator: AppCoordinator?
-    private var viewModel: RepoDetailsViewModel
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -79,16 +80,15 @@ final class RepoDetailsViewController: UIViewController {
             self.repoImageView.transform = self.repoImageView.transform.rotated(by: .pi)
             self.repoImageView.transform = self.repoImageView.transform.rotated(by: .pi)
         }, completion: nil)
-        
     }
 }
 
-//MARK: - UI
+//MARK: - UI and Constants
 private extension RepoDetailsViewController {
     func setupUI() {
         navigationItem.title = DetailScreenConstants.titleText
         setupAttributedText()
-        view.backgroundColor = .white
+        view.backgroundColor = .customColorPurple
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([

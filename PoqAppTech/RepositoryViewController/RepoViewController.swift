@@ -13,6 +13,7 @@ final class RepoViewController: UIViewController {
     private var gitRepos: [RepoModel] = []
     weak var coordinator: AppCoordinator?
     
+    // MARK: - Components
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -136,12 +137,7 @@ extension RepoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(RepoTableViewCell.self)
         if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = UIColor(
-                red: 230/255,
-                green: 230/255,
-                blue: 250/255,
-                alpha: 1.0
-            )
+            cell.backgroundColor = UIColor.customColorPurple
         } else {
             cell.backgroundColor = UIColor.white
         }
