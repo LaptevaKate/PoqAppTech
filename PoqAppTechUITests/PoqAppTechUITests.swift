@@ -8,34 +8,60 @@
 import XCTest
 
 final class PoqAppTechUITests: XCTestCase {
-
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        // This method is called before each test case.
+        // It sets up the test environment by creating an instance of the application to be tested.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    override func tearDownWithError() throws {
+        // This method is called after each test case.
+        // It performs the necessary cleanup by resetting the `app` instance to nil.
+        app = nil
+    }
+    
+    func waitForElementToAppear(_ element: XCUIElement, timeout: TimeInterval = 5) {
+        // This method waits for an element to appear on the screen within a specified timeout.
+        // It uses an expectation and a predicate to evaluate the existence of the element.
+        // If the element appears within the given timeout, the expectation is fulfilled.
+        // Otherwise, the test case fails.
+          let exists = NSPredicate(format: "exists == 1")
+          expectation(for: exists, evaluatedWith: element, handler: nil)
+          waitForExpectations(timeout: timeout, handler: nil)
+      }
+    
+    func testTableViewDisplay() throws {
+        // This is a test case method that verifies the display of a table view.
+        // It retrieves the first table view in the application and asserts its existence.
+        let tableView = app.tables.firstMatch
+        XCTAssertTrue(tableView.exists, "The table view exists")
+    }
+    
+    func testTableFirstCellExist() throws {
+        // This is a test case method that verifies the existence of the first cell in a table view.
+        // It retrieves the first table view in the application and the first cell within it.
+        // It then waits for the cell to appear on the screen and asserts its existence.
+        let tableView = app.tables.firstMatch
+        let firstCell = tableView.cells.element(boundBy: 0)
+        waitForElementToAppear(firstCell)
+        XCTAssertTrue(firstCell.exists, "The first cell exists")
+    }
+    
+    func testTableViewCellTap() throws {
+        // This is a test case method that verifies the interaction with a table view cell.
+        // It retrieves the first table view in the application and the second cell within it.
+        // It then waits for the cell to appear on the screen, taps it, and asserts the existence of a detail screen.
+        let tableView = app.tables.firstMatch
+        let firstCell = tableView.cells.element(boundBy: 1)
+        waitForElementToAppear(firstCell)
+        firstCell.tap()
+        
+        let detailTitle = app.staticTexts["Detail Repos"] 
+        XCTAssertTrue(detailTitle.exists, "The detail screen is displayed")
     }
 }
+
